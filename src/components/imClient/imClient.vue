@@ -257,7 +257,7 @@ export default {
                     alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);
                     cmp.addChatMsg({
                         role: 'robot',
-                        avatarUrl: this.$data.robotEn.avatarUrl,
+                        avatarUrl: cmp.$data.robotEn.avatarUrl,
                         contentType: 'transformServer'
                     });
                     cmp.regSocket();        
