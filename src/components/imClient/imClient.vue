@@ -6,11 +6,11 @@
                 <div class="name-wrapper position-v-mid">
                     <span >FL@W Nice la</span>
                 </div>
-                <div class="opr-wrapper position-v-mid">
+                <!-- <div class="opr-wrapper position-v-mid">
                     <el-tooltip content="關閉對話" placement="bottom" effect="light">
                         <i class="fa fa-close" @click="closeChat()"></i>
                     </el-tooltip>
-                </div>
+                </div> -->
             </div>
             <div class="imClient-main">
                 <!-- 聊天框 -->
@@ -35,6 +35,7 @@ export default {
     },
     data() {
         return {
+            
             socket: null,
             chatInfoEn: {
                 chatState: 'agent', // chat状态；robot 机器人、agent 客服
@@ -73,8 +74,7 @@ export default {
             this.$data.clientChatEn.clientChatId = Number.parseInt(Date.now() + Math.random());
             // 名称格式：姓+6位数字
             var userName = '';
-            // switch (this.$data.clientChatEn.clientChatId % 5) {
-            switch (0) {
+            switch (this.$data.clientChatEn.clientChatId % 5) {
                 case 0:
                     userName = '囂張的張';
                     break;
@@ -241,11 +241,46 @@ export default {
             if (rs.eventType == 'transformServer') {
                 this.transferDialog_show();
             }
+        },
+        initializeLiff() {
+        
+        liff
+            .init({
+                liffId:"1653362037-KnpWkvvY"
+            })
+            .then(() => {
+                // alert('you are in page now');
+                // start to use LIFF's api
+                // initializeApp();
+                liff.getProfile().then(function (profile) {
+                    this.clientChatEn.clientChatId = profile.userId;
+                    this.clientChatEn.clientChatName = profile.displayName;
+                    this.clientChatEn.avatarUrl = profile.pictureUrl;
+                }).catch(function (error) {
+                    console.log('error', error);
+                });
+            })
+            .catch((err) => {   
+                console.log(err);
+
+             });
+
+            this.addChatMsg({
+                role: 'robot',
+                avatarUrl: this.$data.robotEn.avatarUrl,
+                contentType: 'transformServer'
+            });
+
+
         }
     },
     mounted() {
-        this.regClientChatEn();
+        // this.regClientChatEn();
         this.regSocket();
+        window.addEventListener('load', this.initializeLiff);
+
+         
+
     }
 };
 </script>
@@ -275,18 +310,16 @@ export default {
         min-height: 5%;
         box-sizing: border-box;
         background: #1072b5;
+box-shadow: 0px 0px 16px -8px #000000;
+-webkit-box-shadow: 0px 0px 16px -8px #000000;
+-moz-box-shadow: 0px 0px 16px -8px #000000;
+-o-box-shadow: 0px 0px 16px -8px #000000;
         font-size: 16px;
+        
         color: #ffffff;
         .name-wrapper {
-            margin-top: 10px;
-            margin-left: 10px;
-        }
-        .opr-wrapper {
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-top: 10px;
-
+            margin-top: 2%;
+            margin-left: 2%;
         }
     }
     .imClient-main {

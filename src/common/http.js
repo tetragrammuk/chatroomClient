@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 
 var axiosInstance = axios.create({
-    baseURL: location.origin.replace(/:\d+/, ':4000'),
+    baseURL: location.origin.replace(/:\d+/, ':3000'),
     timeout: 1000 * 5
 });
 

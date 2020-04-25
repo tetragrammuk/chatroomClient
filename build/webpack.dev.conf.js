@@ -132,7 +132,7 @@ Your application is running here:
 //             code: 0,
 //             data: {
 //                 fileName: file.name,
-//                 fileUrl: `http://${devWebpackConfig.devServer.host}:4000/static/upload/${encodeFileName}`
+//                 fileUrl: `http://${devWebpackConfig.devServer.host}:3000/static/upload/${encodeFileName}`
 //             },
 //             message: '文件上传成功'
 //         });
@@ -152,7 +152,7 @@ Your application is running here:
 //         }) // 只需要serverChatDic.values内的serverChatEn
 //     });
 // });
-// app.listen(4000);
+// app.listen(3000);
 
 // // socket
 // var server = require('http').createServer();
@@ -230,4 +230,4 @@ Your application is running here:
 //         });
 //     });
 // });
-// server.listen(4001);
+// server.listen(3001);

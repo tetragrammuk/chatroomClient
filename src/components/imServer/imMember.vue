@@ -26,18 +26,31 @@
                     <el-divider></el-divider> 
                     <el-form-item label="電子信箱" prop="row_email">
                         <el-col :span="15">
-                        <el-input > TBD </el-input>
+                        <el-input v-model="selectedChatEn.clientChatId"> TBD </el-input>
                         </el-col>
                     </el-form-item>
                     <el-form-item label="電話號碼" prop="row_phone">
                         <el-col :span="15">
-                        <el-input > TBD</el-input>
+                        <el-input v-model="selectedChatEn.clientChatId"> TBD</el-input>
                         </el-col>
                     </el-form-item>
                     <el-form-item label="最後對話時間" prop="row_jointime">
                         <el-col :span="15">
                         <el-date-picker type="datetime" v-model="selectedChatEn.lastMsgShowTime" style="width: 100%;"></el-date-picker>
                         </el-col>
+                    </el-form-item>
+                    <el-form-item label="註記" prop="row_jointime">
+                        <el-col :span="15">
+                        <el-input
+                        type="textarea"
+                        :autosize="{ minRows: 10, maxRows: 20}"
+                        placeholder=""
+                        v-model="selectedChatEn.clientChatId">
+                        </el-input>
+                        </el-col>
+                    </el-form-item>
+                    <el-form-item>
+                    <el-button type="primary" @click="updated_f">更新設定</el-button>
                     </el-form-item>
                  </el-form>
     <!-- {{selectedChatEn.clientChatId}}
@@ -52,7 +65,8 @@
 <script>
 export default {
     data() {
-        return {};
+        return {
+        };
     },
     computed: {
         selectedChatEn() {

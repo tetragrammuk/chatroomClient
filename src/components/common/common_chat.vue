@@ -78,6 +78,7 @@
                             @keydown="inputContent_keydown"
                             @mouseup="inputContent_mouseup"
                             @mouseleave="inputContent_mouseup"
+                            @keyboardDidHide="sendText"
                         ></div>
                     </div>
                     <!-- 发送按钮 -->
@@ -113,6 +114,7 @@ export default {
     },
     data() {
         return {
+            screenwidth:null, //網頁可見寬
             inputContent_setTimeout: null, // 输入文字时在输入结束才修改具体内容
             selectionRange: null, // 输入框选中的区域
             shortcutMsgList: [], // 聊天区域的快捷回复列表
@@ -164,6 +166,7 @@ export default {
             if (self.chatInfoEn.inputContent.length == '') {
                 return;
             }
+            self.setInputContentByDiv();
             var msgContent = self.chatInfoEn.inputContent;
             document.getElementById('common_chat_input').innerHTML = '';
             self.setInputContentByDiv();
@@ -314,7 +317,7 @@ export default {
             clearTimeout(this.$data.inputContent_setTimeout);
             this.$data.inputContent_setTimeout = setTimeout(function() {
                 self.setInputContentByDiv();
-            }, 200);
+            }, 0);
         },
 
         /**
@@ -503,9 +506,18 @@ export default {
                     this.$refs.common_chat_main.scrollTop = this.$refs.common_chat_main.scrollHeight;
                 }, 100);
             });
-        }
+        },
+		get_bodyHeight () {//动态获取浏览器高度
+            // window.onresize = () => {
+            //     return (() => {
+            //             alert('before'+document.body.clientWidth)
+            //     })()
+            // }
+		}
+
     },
     mounted() {
+        this.screenwidth = document.body.clientWidth;
         this.$nextTick(function() {
             this.init();
         });
@@ -801,7 +813,7 @@ export default {
             }
         }
         .common_chat-footer {
-            height: 5%;
+            height: 7.5%;
             display:flex;
             justify-content:space-between;
             width: 100%;
@@ -820,7 +832,7 @@ export default {
                     text-decoration: blink;
                     & > .iconfont {
                         color: #aaa;
-                        font-size: 20px;
+                        font-size: 24px;
                     }
                 }
             }
@@ -832,6 +844,7 @@ export default {
                 .inputContent {
                     padding: 2px;
                     height: 20px;
+                    font-size: 16px;
                     resize: none;
                     overflow: auto;
                     line-height: 1.5;
@@ -841,7 +854,7 @@ export default {
             .send-btn {
                 display:flex;
                 justify-content:flex-end;
-                width:14%;
+                width:25%;
                 height:80%;
                 min-width:14%;
                 margin-right:1%;
