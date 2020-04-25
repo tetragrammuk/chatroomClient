@@ -108,7 +108,7 @@ export default {
          * @param {String} serverChatId 服务端chatId
          */
         regSocket: function() {
-            this.$data.socket = require('socket.io-client')('http://35.229.140.150:3001');
+            this.$data.socket = require('socket.io-client')('https://theflowchat.com:3001');
             this.$data.socket.on('connect', () => {
                
                 // 客互一連 加 userdata pass to server
