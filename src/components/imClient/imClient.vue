@@ -284,7 +284,7 @@ export default {
     },
     mounted() {
         window.addEventListener('load', this.initializeLiff);
-
+        window.addEventListener('onbeforeunload',this.closeChat);
         
     },
     beforeDestroy(){
