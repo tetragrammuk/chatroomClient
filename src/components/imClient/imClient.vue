@@ -243,13 +243,10 @@ export default {
             }
         },
         initializeLiff() {
-
-            let cmp = this;
-
+        let cmp = this;
         liff
             .init({
-                liffId:"1653362037-KnpWkvvY"
-               
+                liffId:"1653362037-KnpWkvvY"            
             })
             .then(() => {
                 alert('liff init success');
@@ -258,6 +255,13 @@ export default {
                     cmp.$data.clientChatEn.clientChatName = profile.displayName;
                     // cmp.$data.clientChatEn.avatarUrl = profile.pictureUrl;
                     alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);
+                    cmp.addChatMsg({
+                        role: 'robot',
+                        avatarUrl: this.$data.robotEn.avatarUrl,
+                        contentType: 'transformServer'
+                    });
+                    cmp.regSocket();        
+
                 }).catch(function (error) {
                     alert(error);
                     console.log('error', error);
@@ -268,12 +272,12 @@ export default {
 
              });
 
-            this.addChatMsg({
-                role: 'robot',
-                avatarUrl: this.$data.robotEn.avatarUrl,
-                contentType: 'transformServer'
-            });
-            this.regSocket();
+            // this.addChatMsg({
+            //     role: 'robot',
+            //     avatarUrl: this.$data.robotEn.avatarUrl,
+            //     contentType: 'transformServer'
+            // });
+            // this.regSocket();
 
 
         }
@@ -282,7 +286,10 @@ export default {
         window.addEventListener('load', this.initializeLiff);
 
         
-    }
+    },
+    beforeDestroy(){
+        this.closeChat();
+    },
 };
 </script>
 
