@@ -243,20 +243,23 @@ export default {
             }
         },
         initializeLiff() {
-        
+
+            let cmp = this;
+
         liff
             .init({
                 liffId:"1653362037-KnpWkvvY"
+               
             })
             .then(() => {
-                // alert('you are in page now');
-                // start to use LIFF's api
-                // initializeApp();
+                alert('liff init success');
                 liff.getProfile().then(function (profile) {
-                    this.clientChatEn.clientChatId = profile.userId;
-                    this.clientChatEn.clientChatName = profile.displayName;
-                    this.clientChatEn.avatarUrl = profile.pictureUrl;
+                    cmp.$data.clientChatEn.clientChatId = profile.userId;
+                    cmp.$data.clientChatEn.clientChatName = profile.displayName;
+                    // cmp.$data.clientChatEn.avatarUrl = profile.pictureUrl;
+                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);
                 }).catch(function (error) {
+                    alert(error);
                     console.log('error', error);
                 });
             })
@@ -270,17 +273,15 @@ export default {
                 avatarUrl: this.$data.robotEn.avatarUrl,
                 contentType: 'transformServer'
             });
+            this.regSocket();
 
 
         }
     },
     mounted() {
-        // this.regClientChatEn();
-        this.regSocket();
         window.addEventListener('load', this.initializeLiff);
 
-         
-
+        
     }
 };
 </script>

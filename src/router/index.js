@@ -7,7 +7,7 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-        { path: '/', redirect: 'imServer' },
+        { path: '*', component: imClient },
         { path: '/imServer', name: 'imServer', component: imServer },
         { path: '/imClient', name: 'imClient', component: imClient },
     ]
