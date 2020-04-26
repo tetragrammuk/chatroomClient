@@ -143,9 +143,16 @@ export default {
 
 
                 // 离开
-                window.addEventListener('beforeunload', () => {
-                    this.closeChat();
-                });
+                // window.addEventListener('beforeunload', () => {
+                //     this.closeChat();
+                // });
+                // window.addEventListener('onbeforeunload', () => {
+                //     this.closeChat();
+                // });
+                //  window.addEventListener('blur', () => {
+                //     this.closeChat();
+                // });
+
             });
         },
 
@@ -153,6 +160,7 @@ export default {
          * 结束会话
          */
         closeChat: function() {
+            alert("close!!!chat");
             if (this.$data.chatInfoEn.chatState == 'agent') {
                 this.$data.socket.emit('CLIENT_OFF', {
                     clientChatEn: this.$data.clientChatEn,
@@ -265,6 +273,12 @@ export default {
                 }).catch(function (error) {
                     alert(error);
                     console.log('error', error);
+                    cmp.addChatMsg({
+                        role: 'robot',
+                        avatarUrl: cmp.$data.robotEn.avatarUrl,
+                        contentType: 'transformServer'
+                    });
+                    cmp.regSocket();   
                 });
             })
             .catch((err) => {   
@@ -284,12 +298,19 @@ export default {
     },
     mounted() {
         window.addEventListener('load', this.initializeLiff);
-        window.addEventListener('onbeforeunload',this.closeChat);
+        // window.addEventListener('beforeunload', () => {
+        //     this.closeChat();
+        // });
+        // window.addEventListener('onbeforeunload', () => {
+        //     this.closeChat();
+        // });
+                //  window.addEventListener('blur', () => {
+                //     this.closeChat();
+                // });
         
-    },
-    beforeDestroy(){
-        this.closeChat();
-    },
+    }
+
+
 };
 </script>
 
