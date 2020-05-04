@@ -121,7 +121,7 @@ export default {
         // 客互一連 加 userdata pass to server
         this.$data.socket.emit("CLIENT_ON", {
           clientChatEn: this.$data.clientChatEn,
-          serverChatId: "ieat"
+          serverChatId: "Mr.Demo"
         });
         // 服务端链接
         this.$data.socket.on("SERVER_CONNECTED", data => {
@@ -175,7 +175,7 @@ export default {
       if (this.$data.chatInfoEn.chatState == "agent") {
         this.$data.socket.emit("CLIENT_OFF", {
           clientChatEn: this.$data.clientChatEn,
-          serverChatId: "ieat"
+          serverChatId: "Mr.Demo"
         });
         this.$data.socket.close();
         this.$data.chatInfoEn.state = "off";
