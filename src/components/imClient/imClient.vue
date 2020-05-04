@@ -243,7 +243,7 @@ export default {
       } else if (this.$data.chatInfoEn.chatState == "agent") {
         // 客服接口
         this.$data.socket.emit("CLIENT_SEND_MSG", {
-          serverChatId: "ieat",
+          serverChatId: "Mr.Demo",
           clientChatEn: this.$data.clientChatEn,
           msg: msg
         });
