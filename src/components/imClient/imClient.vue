@@ -4,7 +4,7 @@
         <div class="imClient-inner">
             <div class="imClient-header">
                 <div class="name-wrapper position-v-mid">
-                <el-button @click="QRscan" >點我拍照</el-button>
+                <el-button @click="QRscan()" >點我拍照</el-button>
                 </div>
                 <!-- <div class="opr-wrapper position-v-mid">
                     <el-tooltip content="關閉對話" placement="bottom" effect="light">
@@ -25,6 +25,7 @@ import commonChat from '@/components/common/common_chat.vue';
 import imRate from './imRate.vue';
 import imLeave from './imLeave.vue';
 import imTransfer from './imTransfer.vue';
+import axios from 'axios';
 
 export default {
     components: {
@@ -263,6 +264,16 @@ export default {
 	            toggleQrCodeReader();
                  this.$message('text ='+stringifiedResult);
                  this.$message('id ='+cmp.$data.clientChatEn.clientChatId);
+                axios.post("https://theflowchat.com:5001/test41",
+				    {   
+                    QR:stringifiedResult,
+                    UserID:cmp.$data.clientChatEn.clientChatId
+                    }  
+                )
+                .then(response =>(
+                    this.$message('response ='+response);
+                )) ;
+
 	        }).catch(err => {
 	            document.getElementById('scanQrField').textContent = "scanCode failed!";
 	        });
@@ -274,7 +285,7 @@ export default {
         let cmp = this;
         liff
             .init({
-                liffId:"1653362037-KnpWkvvY"            
+                liffId:"1653362390-N00pD2A1"            
             })
             .then(() => {
                 alert('liff init success');
