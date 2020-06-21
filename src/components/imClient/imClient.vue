@@ -270,8 +270,8 @@ export default {
                     UserID:cmp.$data.clientChatEn.clientChatId
                     }
                 )
-                .then(response =>(
-                cmp.$message('response ='+response);
+                .then(response =>{
+                cmp.$message('response ='+response};
                 )) ;
 
 	        }).catch(err => {
