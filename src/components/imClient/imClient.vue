@@ -262,16 +262,16 @@ export default {
 	            const stringifiedResult = JSON.stringify(result);
 	            document.getElementById('scanQrField').textContent = stringifiedResult;
 	            toggleQrCodeReader();
-                 this.$message('text ='+stringifiedResult);
-                 this.$message('id ='+cmp.$data.clientChatEn.clientChatId);
+                 cmp.$message('text ='+stringifiedResult);
+                 cmp.$message('id ='+cmp.$data.clientChatEn.clientChatId);
                 axios.post("https://theflowchat.com:5001/test41",
 				    {   
                     QR:stringifiedResult,
                     UserID:cmp.$data.clientChatEn.clientChatId
-                    }  
+                    }
                 )
                 .then(response =>(
-                    this.$message('response ='+response);
+                cmp.$message('response ='+response);
                 )) ;
 
 	        }).catch(err => {
