@@ -288,28 +288,17 @@ export default {
                 liffId:"1654379333-M6qoLqzG"            
             })
             .then(() => {
+                const accessToken = liff.getAccessToken();
                 alert('liff init success');
                 liff.getProfile().then(function (profile) {
                     cmp.$data.clientChatEn.clientChatId = profile.userId;
                     cmp.$data.clientChatEn.clientChatName = profile.displayName;
                     // cmp.$data.clientChatEn.avatarUrl = profile.pictureUrl;
-                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);
-                    cmp.addChatMsg({
-                        role: 'robot',
-                        avatarUrl: cmp.$data.robotEn.avatarUrl,
-                        contentType: 'transformServer'
-                    });
-                    cmp.regSocket();        
+                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);        
 
                 }).catch(function (error) {
                     alert(error);
-                    console.log('error', error);
-                    cmp.addChatMsg({
-                        role: 'robot',
-                        avatarUrl: cmp.$data.robotEn.avatarUrl,
-                        contentType: 'transformServer'
-                    });
-                    cmp.regSocket();   
+                    console.log('error', error); 
                 });
             })
             .catch((err) => {   
