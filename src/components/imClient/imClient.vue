@@ -285,16 +285,17 @@ export default {
         let cmp = this;
         liff
             .init({
-                liffId: '1654198211-eMqv2EW7'            
+                liffId: "1654198211-eMqv2EW7"           
             })
-            .ready.then(() => {
-                const accessToken = liff.getAccessToken();
-                alert('liff init success');
-                liff.getProfile().then(function (profile) {
+            .then(() => {
+                liff.ready.then(() => {
+                    alert('liff init success');
+                    liff.getProfile().then(function (profile) {
                     cmp.$data.clientChatEn.clientChatId = profile.userId;
                     cmp.$data.clientChatEn.clientChatName = profile.displayName;
-                    // cmp.$data.clientChatEn.avatarUrl = profile.pictureUrl;
-                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);        
+
+                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);  
+                    })    
 
                 })
                 // .catch(function (error) {
