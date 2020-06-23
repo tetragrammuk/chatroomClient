@@ -296,15 +296,16 @@ export default {
                     // cmp.$data.clientChatEn.avatarUrl = profile.pictureUrl;
                     alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);        
 
-                }).catch(function (error) {
-                    alert(error);
-                    console.log('error', error); 
-                });
+                })
+                // .catch(function (error) {
+                //     // alert(error);
+                //     // console.log('error', error); 
+                // });
             })
-            .catch((err) => {   
-                console.log(err);
+            // .catch((err) => {   
+            //     // console.log(err);
 
-             });
+            //  });
 
         }
     },
