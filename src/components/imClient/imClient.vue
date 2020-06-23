@@ -285,7 +285,7 @@ export default {
         let cmp = this;
         liff
             .init({
-                liffId:"1654379333-M6qoLqzG"            
+                liffId: '1654198211-eMqv2EW7'            
             })
             .then(() => {
                 const accessToken = liff.getAccessToken();
@@ -305,14 +305,6 @@ export default {
                 console.log(err);
 
              });
-
-            // this.addChatMsg({
-            //     role: 'robot',
-            //     avatarUrl: this.$data.robotEn.avatarUrl,
-            //     contentType: 'transformServer'
-            // });
-            // this.regSocket();
-
 
         }
     },
