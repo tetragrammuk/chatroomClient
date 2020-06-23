@@ -287,7 +287,7 @@ export default {
             .init({
                 liffId: '1654198211-eMqv2EW7'            
             })
-            .then(() => {
+            .ready.then(() => {
                 const accessToken = liff.getAccessToken();
                 alert('liff init success');
                 liff.getProfile().then(function (profile) {
