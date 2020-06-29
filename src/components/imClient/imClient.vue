@@ -285,7 +285,8 @@ export default {
         let cmp = this;
         liff
             .init({
-                liffId: "1654198211-eMqv2EW7"           
+                // liffId: "1654198211-eMqv2EW7"  
+                liffId: "123231321""          
             })
             .then(() => {
                 liff.ready.then(() => {
@@ -298,15 +299,15 @@ export default {
                     })    
 
                 })
-                // .catch(function (error) {
-                //     // alert(error);
-                //     // console.log('error', error); 
-                // });
+                .catch(function (error) {
+                    alert(error);
+                    console.log('error', error); 
+                });
             })
-            // .catch((err) => {   
-            //     // console.log(err);
+            .catch((err) => {   
+                console.log(err);
 
-            //  });
+             });
 
         }
     },
