@@ -5,6 +5,7 @@
             <div class="imClient-header">
                 <div class="name-wrapper position-v-mid">
                 <el-button @click="QRscan()" >點我拍照</el-button>
+                <el-button @click="initializeLiff()" >點我INIT</el-button>
                 </div>
                 <!-- <div class="opr-wrapper position-v-mid">
                     <el-tooltip content="關閉對話" placement="bottom" effect="light">
@@ -285,20 +286,18 @@ export default {
         let cmp = this;
         liff
             .init({
-                liffId: "1654198211-eMqv2EW7"  
-                // liffId: "123231321"
+                liffId: '1654198211-eMqv2EW7'           
             })
             .then(() => {
-                liff.ready.then(() => {
+           
                     alert('liff init success');
-                    liff.getProfile().then(function (profile) {
+                liff.getProfile().then(function (profile) {
                     cmp.$data.clientChatEn.clientChatId = profile.userId;
                     cmp.$data.clientChatEn.clientChatName = profile.displayName;
 
                     alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);  
-                    })    
+                })    
 
-                })
                 .catch(function (error) {
                     alert(error);
                     console.log('error', error); 
@@ -312,7 +311,7 @@ export default {
         }
     },
     mounted() {
-        window.addEventListener('load', this.initializeLiff);
+        // window.addEventListener('load', this.initializeLiff);
         // window.addEventListener('beforeunload', () => {
         //     this.closeChat();
         // });
