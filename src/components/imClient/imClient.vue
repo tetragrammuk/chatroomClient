@@ -276,7 +276,7 @@ export default {
           liffId: "1653362390-N00pD2A1"
         })
         .then(() => {
-          alert("liff init success");
+          //alert("liff init success");
           liff
             .getProfile()
             .then(function(profile) {
