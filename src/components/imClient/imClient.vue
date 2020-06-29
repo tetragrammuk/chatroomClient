@@ -285,8 +285,8 @@ export default {
         let cmp = this;
         liff
             .init({
-                // liffId: "1654198211-eMqv2EW7"  
-                liffId: "123231321"
+                liffId: "1654198211-eMqv2EW7"  
+                // liffId: "123231321"
             })
             .then(() => {
                 liff.ready.then(() => {
