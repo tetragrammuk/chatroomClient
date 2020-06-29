@@ -88,19 +88,15 @@ export default {
             .init({
                 liffId: '1654198211-eMqv2EW7'           
             })
-            .then(() => {
-           
-                    alert('liff init success');
+            .then(() => { 
+                alert('liff init success');
                 liff.getProfile().then(function (profile) {
-                    cmp.$data.clientChatEn.clientChatId = profile.userId;
-                    cmp.$data.clientChatEn.clientChatName = profile.displayName;
-
-                    alert('this is clientid'+cmp.$data.clientChatEn.clientChatId);  
-                })    
-
-                .catch(function (error) {
-                    alert(error);
-                    console.log('error', error); 
+                    cmp.userId = profile.userId;
+                    cmp.displayName = profile.displayName;
+                    cmp.pictureUrl = profile.pictureUrl;
+                    alert("userid"+profile.userId)
+                }).catch(function (error) {
+                    alert(error)
                 });
             })
             .catch((err) => {   
